@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script</title>
+</head>
+
+<body>
+    <div>
+        <h1 id="heading">お見出しですわよ</h1>
+        <p id="elem">変化させたい要素＾＾</p>
+        <p>わたくしはこの家を守るんですの</p>
+
+        <img id="image" src="https://picsum.photos/200/300?image=0" alt="">
+    </div>
+
+    <script>
+        const image = document.getElementById('image');
+        const elem = document.getElementById('elem');
+        elem.addEventListener('mouseover', function () {
+            image.setAttribute('src', 'https://picsum.photos/200/300?image=100');
+        });
+        elem.addEventListener('mouseout', function () {
+            image.setAttribute('src', 'https://picsum.photos/200/300?image=0');
+        });
+    </script>
+
+    <!-- <script>
+        let elem = document.getElementById('elem');
+
+        elem.addEventListener('mouseover', function () {
+            elem.style.fontSize = '30px';
+            heading.style.color = '#f00';
+        });
+        elem.addEventListener('mouseout', function () {
+            elem.style.fontSize = '16px';
+            heading.style.color = '#000';
+        });
+
+        let heading = document.getElementById('heading');
+        heading.style.marginTop = '200px';
+        heading.style.fontSize = '50px';
+    </script> -->
+</body>
+
+</html>
