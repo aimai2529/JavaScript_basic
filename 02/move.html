@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習03</title>
+</head>
+
+<body>
+    <div class="btns">
+        <button id="left">←</button>
+        <button id="reset">■</button>
+        <button id="right">→</button>
+    </div>
+
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWRS5_e_YWwE9hGJKIG6nMtQftwRjJ1XbCpyJWkqgOSRBDTZxSBpwA3RTFCDFFF2nnRT4XbEsz9VJthBedmboErPEPm5lBs1adVeU1icYbPjNV8sEpvRKxgFR4B2jQTAvw0waOKl4wLIg8/s400/halloween_obake_kasou.png"
+        alt="" id="ghost" width="200px">
+
+    <script>
+        const leftBtn = document.getElementById('left'),
+            rightBtn = document.getElementById('right'),
+            resetBtn = document.getElementById('reset'),
+            ghost = document.getElementById('ghost');
+
+        let imgPosition = 300;
+        ghost.style.transform = `translateX(${imgPosition}px)`;
+
+        leftBtn.addEventListener('click', function () {
+            imgPosition -= 20;
+            ghost.style.transform = `translateX(${imgPosition}px)`;
+        });
+
+        rightBtn.addEventListener('click', function () {
+            ghost.style.transform = `translateX(${imgPosition += 20}px)`;
+        });
+
+        resetBtn.addEventListener('click', function () {
+            imgPosition = 300;
+            ghost.style.transform = `translateX(${imgPosition}px)`;
+        });
+
+    </script>
+</body>
+
+</html>

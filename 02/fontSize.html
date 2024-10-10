@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習02</title>
+</head>
+
+<body>
+    <p id="result">
+        文字が大きくなる
+    </p>
+    <button id="plus">+</button>
+    <button id="reset">reset</button>
+
+    <script>
+        const result = document.getElementById('result'),
+            resetBtn = document.getElementById('reset'),
+            plusBtn = document.getElementById('plus');
+
+        let size = 16;
+
+        plusBtn.addEventListener('click', function () {
+            size += 1;
+            result.style.fontSize = `${size}px`;
+            console.log(size);
+        });
+
+        resetBtn.addEventListener('click', function () {
+            size = 16;
+            result.style.fontSize = `${size}px`;
+        });
+    </script>
+</body>
+
+</html>
