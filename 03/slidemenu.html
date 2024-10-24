@@ -1,0 +1,76 @@
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slidemenu</title>
+    <style>
+        #btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+
+        #menu {
+            position: fixed;
+            top: -210px;
+            left: 0;
+            width: 100%;
+            padding: 50px 0;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            transition: .7s;
+        }
+
+        .open {
+            transform: translateY(210px);
+        }
+
+        #menu ul {
+            padding-left: 0;
+            list-style-type: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">メニュー</button>
+    <div id="menu">
+        <ul>
+            <li>HOME</li>
+            <li>ABOUT</li>
+            <li>CONTACT</li>
+        </ul>
+    </div>
+    <a href="./click2.html">クリックゲーム２へ</a>
+
+    <script>
+        const btn = document.getElementById('btn'),
+            menu = document.getElementById('menu');
+
+        // btn.addEventListener('click', function () {
+        //     menu.classList.toggle('open');
+        // })
+
+        let num = 0;
+
+        btn.addEventListener('click', function () {
+            if (num === 0) {
+                num += 1;
+                menu.classList.add('open');
+                btn.innerHTML = `閉じる`;
+                console.log(num);
+            } else if (num === 1) {
+                num -= 1;
+                menu.classList.remove('open');
+                btn.innerHTML = `メニュー`;
+            }
+        })
+
+        console.log(num);
+    </script>
+</body>
+
+</html>

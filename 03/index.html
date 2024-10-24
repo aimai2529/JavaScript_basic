@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件分岐</title>
+</head>
+
+<body>
+    <p id="sample" class="hoge fuga">ほげ</p>
+    <a href="./click.html">クリックゲームへ</a>
+
+    <script>
+        const sample = document.getElementById('sample');
+        console.log(sample.classList)
+        sample.classList.add('piyo');
+        sample.classList.remove('hoge');
+        sample.classList.replace('fuga', 'hogera');
+        console.log(sample.classList.contains('hoge'));
+
+        console.log(sample.classList);
+
+        let year = 1998,
+            num = 11;
+        // year = 2006;
+        if (year >= 2019) {
+            console.log(`令和${year - 2018}年！`);
+        }
+        console.log(year >= 2019);
+
+        if (num % 2 == 0) {
+            console.log(`偶数！！`);
+        } else {
+            console.log(`奇数！！`);
+        }
+
+        if (num) {
+            console.log('こんちゃ');
+        }
+
+        if (year >= 2026) {
+            console.log(`未来！`);
+        } else if (year >= 2019) {
+            console.log(`令和${year - 2018}年！`);
+        } else if (year >= 1990) {
+            console.log(`平成${year - 1989}年！`);
+        } else if (year >= 1926) {
+            console.log(`昭和${year - 1925}年！`);
+        } else if (year <= 1925) {
+            console.log(`大昔！`);
+        }
+    </script>
+
+</body>
+
+</html>

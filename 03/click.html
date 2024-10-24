@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Game</title>
+    <style>
+        #enemy {
+            transition: .5s;
+        }
+
+        .finish {
+            transform: rotate(720deg) scale(0);
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./monster.png" alt="" id="enemy">
+    <p id="hitPoint"></p>
+    <a href="./index.html">indexへ</a>
+    <a href="./click2.html">クリックゲーム２へ</a>
+
+    <script>
+        const enemy = document.getElementById('enemy'),
+            hitPoint = document.getElementById('hitPoint');
+        let num = 10;
+        hitPoint.innerHTML = `HP : ${num}`
+
+        enemy.addEventListener('click', function () {
+            if (num > 0) {
+                num -= 1;
+                hitPoint.innerHTML = `HP : ${num}`;
+            }
+            if (num == 0) {
+                enemy.classList.add('finish');
+            }
+            console.log(num, enemy.classList)
+        });
+
+        console.log(num, enemy.classList)
+
+    </script>
+</body>
+
+</html>
