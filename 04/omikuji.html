@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おみくじ</title>
+</head>
+
+<body>
+    <button id="btn">占う</button>
+    <p id="result">結果が表示されます。</p>
+    <p id="message">何か一言が表示されます。</p>
+    <a href="./index.html">indexへ</a>
+    <a href="./omikuji2.html">おみくじ２へ</a>
+
+
+    <script>
+        const btn = document.getElementById('btn'),
+            result = document.getElementById('result'),
+            message = document.getElementById('message');
+        let num;
+
+        btn.addEventListener('click', function () {
+            num = Math.floor(Math.random() * 5);
+            console.log(num);
+            switch (num) {
+                case 0:
+                    result.innerHTML = '大吉';
+                    message.innerHTML = '今日はとってもいいことがありそう！'
+                    break;
+                case 1:
+                    result.innerHTML = '中吉';
+                    message.innerHTML = '今日の夜ご飯はとっても美味しい！'
+                    break;
+                case 2:
+                    result.innerHTML = '小吉';
+                    message.innerHTML = 'トイレに並ばずに入れる！'
+                    break;
+                case 3:
+                    result.innerHTML = '凶';
+                    message.innerHTML = '帰りに勧誘に話しかけられそう！'
+                    break;
+                case 4:
+                    result.innerHTML = '大凶';
+                    message.innerHTML = 'インフルエンザになりそう！'
+                    break;
+
+                default:
+                    result.innerHTML = '...え？';
+                    message.innerHTML = 'どうしてそうなったの...？'
+
+            }
+        });
+    </script>
+</body>
+
+</html>

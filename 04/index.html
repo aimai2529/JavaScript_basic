@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch文</title>
+</head>
+
+<body>
+    <a href="./omikuji.html">おみくじへ</a>
+    <button id="btn" class="red">click me!</button>
+    <script>
+        const btn = document.getElementById('btn');
+
+        console.log(btn.classList);
+
+        btn.addEventListener('click', function () {
+            const color = btn.classList.value;
+
+            switch (color) {
+                case 'red':
+                    document.body.style.backgroundColor = '#f00';
+                    break;
+                case 'blue':
+                    document.body.style.backgroundColor = '#00f';
+                    break;
+                case 'green':
+                    document.body.style.backgroundColor = '#0f0';
+                    break;
+                default:
+                    document.body.style.backgroundColor = '#fff';
+                    break;
+
+            }
+        });
+    </script>
+</body>
+
+</html>
