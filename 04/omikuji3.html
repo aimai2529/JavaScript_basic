@@ -21,11 +21,13 @@
     <p><img src="https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/omikuji.png" alt="結果" id="result">
     </p>
     <p id="message">何か一言が表示されます。</p>
-    <p>大吉<span id="daikichiTime">０</span>回</p>
+    <!-- <p>大吉<span id="daikichiTime">０</span>回</p>
     <p>中吉<span id="chuukichiTime">０</span>回</p>
     <p>小吉<span id="syoukichiTime">０</span>回</p>
     <p>凶<span id="kyouTime">０</span>回</p>
-    <p>大凶<span id="daikyouTime">０</span>回</p>
+    <p>大凶<span id="daikyouTime">０</span>回</p> -->
+    <div id="count"></div>
+    <p>クリック回数のうち大吉だった割合は<span id="ratio"></span>%だよ</p>
     <a href="./omikuji2.html">おみくじ2へ</a>
     <a href="./">indexへ</a>
 
@@ -34,11 +36,13 @@
         const btn = document.getElementById('btn'),
             result = document.getElementById('result'),
             message = document.getElementById('message'),
-            daikichiTime = document.getElementById('daikichiTime'),
-            chuukichiTime = document.getElementById('chuukichiTime'),
-            syoukichiTime = document.getElementById('syoukichiTime'),
-            kyouTime = document.getElementById('kyouTime'),
-            daikyouTime = document.getElementById('daikyouTime');
+            // daikichiTime = document.getElementById('daikichiTime'),
+            // chuukichiTime = document.getElementById('chuukichiTime'),
+            // syoukichiTime = document.getElementById('syoukichiTime'),
+            // kyouTime = document.getElementById('kyouTime'),
+            // daikyouTime = document.getElementById('daikyouTime'),
+            count = document.getElementById('count'),
+            ratio = document.getElementById('ratio');
         let num,
             daikichi = 0,
             chuukichi = 0,
@@ -47,48 +51,75 @@
             daikyou = 0;
 
         btn.addEventListener('click', function () {
-            num = Math.floor(Math.random() * 5);
+            num = Math.floor(Math.random() * 10);
             console.log(num);
             switch (num) {
                 case 0:
                     result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/daikichi.png');
-                    message.innerHTML = '今日はとってもいいことがありそう！';
                     daikichi += 1;
-                    daikichiTime.innerHTML = daikichi;
+                    // コメントを変えている
+                    switch (daikichi) {
+                        case 1:
+                        case 2:
+                            message.innerHTML = '今日はとってもいいことがありそう！';
+                            break;
+                        case 3:
+                        case 4:
+                        case 5:
+                            message.innerHTML = '超大吉！今日は人生で最高の日！'
+                            break;
+
+                        default:
+                            message.innerHTML = '連打しすぎでしょ…暇なの？';
+                            break;
+                    }
+                    // daikichiTime.innerHTML = daikichi;
                     break;
                 case 1:
+                case 2:
                     result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/chuukichi.png');
                     message.innerHTML = '今日の夜ご飯はとっても美味しい！';
                     chuukichi += 1;
-                    chuukichiTime.innerHTML = chuukichi;
+                    // chuukichiTime.innerHTML = chuukichi;
                     break;
-                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
                     result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/syoukichi.png');
                     message.innerHTML = 'トイレに並ばずに入れる！';
                     syoukichi += 1;
-                    syoukichiTime.innerHTML = syoukichi;
+                    // syoukichiTime.innerHTML = syoukichi;
                     break;
-                case 3:
+                case 7:
+                case 8:
                     result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/kyou.png');
                     message.innerHTML = '帰りに勧誘に話しかけられそう！';
                     kyou += 1;
-                    kyouTime.innerHTML = kyou;
+                    // kyouTime.innerHTML = kyou;
                     break;
-                case 4:
+                case 9:
                     result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/daikyou.png');
                     message.innerHTML = 'インフルエンザになりそう！';
                     daikyou += 1;
-                    daikyouTime.innerHTML = daikyou;
+                    // daikyouTime.innerHTML = daikyou;
                     break;
 
                 default:
                     result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/omikuji.png');
                     message.innerHTML = 'どうしてそうなったの...？';
-
             }
             result.classList.toggle('anim');
+            count.innerHTML = `<p>大吉${daikichi}回</p>
+    <p>中吉${chuukichi}回</p>
+    <p>小吉${syoukichi}回</p>
+    <p>凶${kyou}回</p>
+    <p>大凶${daikyou}回</p>`;
+            ratio.innerHTML = Math.floor(daikichi / (daikichi + chuukichi + syoukichi + kyou + daikyou) * 100);
+            // クリック回数に対する大吉の回数の割合を整数で表示
         });
     </script>
+
 </body>
 
 </html>
