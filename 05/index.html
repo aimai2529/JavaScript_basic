@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>繰り返し処理</title>
+</head>
+
+<body>
+    <a href="./count01.html">カウント１へ</a>
+    <script>
+        // ０〜１０の偶数
+        let num = 0;
+        while (num <= 10) {
+            // console.log(num);
+            // num += 2;
+            if (num % 2 == 0) {
+                console.log(num);
+            }
+            num += 1;
+        }
+
+        // ０〜１０の奇数
+        num = 1;
+        while (num <= 10) {
+            console.log(num);
+            num += 2;
+        }
+
+        // りんごを五回
+        num = 0;
+        while (num < 5) {
+            console.log('🍎');
+            num += 1;
+        }
+
+        // 0~100を足す
+        num = 0;
+        let total = 0;
+        while (num <= 100) {
+            total += num;
+            num += 1;
+        }
+        console.log(total);
+
+        // ここからfor文
+        // 0~20の偶数
+        for (let i = 0; i <= 20; i++) {
+            if (i % 2 == 0) {
+                console.log(i);
+            }
+        }
+
+        // 奇数
+        for (let i = 0; i <= 20; i++) {
+            if (i % 2 == 1) {
+                console.log(i);
+            }
+        }
+
+        // バナナを10回
+        for (let i = 0; i < 10; i++) {
+            console.log('🍌');
+        }
+
+        // 0~1000を足す
+        let sum = 0;
+        for (let i = 0; i <= 1000; i++) {
+            sum += i;
+        }
+        console.log(sum);
+    </script>
+</body>
+
+</html>
