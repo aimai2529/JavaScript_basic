@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>応用</title>
+</head>
+
+<body>
+    <button id="red" class="btn">aa3333</button>
+    <button id="green" class="btn">33aa33</button>
+    <button id="blue" class="btn">3333aa</button>
+    <a href="./index.html">indexへ</a>
+    <a href="./click.html">クリックゲームへ</a>
+
+    <script>
+        const btn = document.querySelectorAll('.btn');
+
+        for (let i = 0; i < btn.length; i++) {
+            btn[i].addEventListener('click', function () {
+                document.body.style.backgroundColor = `#${btn[i].innerHTML}`;
+            })
+        }
+    </script>
+</body>
+
+</html>

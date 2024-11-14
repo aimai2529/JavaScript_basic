@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クリックゲーム</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .all {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .chr {
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="./index.html">indexへ</a>
+    <h1>click game</h1>
+    <p class="msg">クリックでモンスターを倒せ！</p>
+    <div class="all">
+        <div class="chr">
+            <img src="https://trident.takagino.net/doc/2018/javascript/data/03/images/a0.png" alt="">
+            <p>HP:10</p>
+        </div>
+        <div class="chr">
+            <img src="https://trident.takagino.net/doc/2018/javascript/data/03/images/a1.png" alt="">
+            <p>HP:10</p>
+        </div>
+        <div class="chr">
+            <img src="https://trident.takagino.net/doc/2018/javascript/data/03/images/a2.png" alt="">
+            <p>HP:10</p>
+        </div>
+    </div>
+
+    <script>
+        const charactor = document.querySelectorAll('.chr'),
+            hitpoint = document.querySelectorAll('.chr p'),
+            message = document.querySelector('.msg'),
+            count = [];
+
+        for (let i = 0; i < hitpoint.length; i++) {
+            console.log(hitpoint[i].innerHTML);
+        };
+
+        for (let i = 0; i < charactor.length; i++) {
+            count[i] = 0;
+            charactor[i].addEventListener('click', function () {
+                console.log('hit' + count[i]);
+                if (count[i] < 10) {
+                    count[i] += 1;
+                    hitpoint[i].innerHTML = `HP:${10 - count[i]}`;
+                    if (count[0] == 10 && count[1] == 10 && count[2] == 10) {
+                        message.innerHTML = 'おめでとう！！';
+                    }
+                };
+            });
+        };
+
+    </script>
+
+</body>
+
+</html>

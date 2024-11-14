@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配列</title>
+</head>
+
+<body>
+    <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li class="obj">ccc</li>
+        <li class="obj">ddd</li>
+    </ul>
+
+    <a href="./omikuji.html">おみくじ再びへ</a>
+
+    <script>
+        const fruits = ['apple', 'banana', 'orange'];
+        console.log(fruits);
+
+        console.log(fruits[2]);
+
+        fruits[0] = 'grape';
+        console.log(fruits);
+        console.log(fruits.length);
+
+        const system = new Array(65);
+        console.log(system);
+
+        const num = [5, 10, 15, 20, 25, 30];
+        let sum = 0;
+        for (let i = 0; i < num.length; i++) {
+            sum += num[i];
+        }
+        console.log(sum);
+
+        let sumsum = 0;
+        for (let i = 1; i < (num.length - 1); i++) {
+            sumsum += num[i];
+        }
+        console.log(sumsum);
+
+        // const list = document.getElementsByTagName('li');
+        const list = document.getElementsByClassName('obj'); // Elements（複数形）であることに注意
+        console.log(list);
+
+        for (let i = 0; i < list.length; i++) {
+            console.log(list[i].innerHTML);
+        }
+        for (let i = 0; i < list.length; i++) {
+            console.log(list[i]);
+        }
+
+        const elem = document.querySelector('.obj'); // セレクタに一致した最初の要素だけを取得する
+        console.log(elem);
+
+        const all = document.querySelectorAll('.obj'); // セレクタに一致した全ての要素を取得する
+        console.log(all);
+
+        const obj = document.querySelectorAll('.obj');
+
+        for (let i = 0; i < obj.length; i++) {
+            obj[i].addEventListener('click', function () {
+                console.log('SANチェックです。');
+            })
+        }
+
+    </script>
+</body>
+
+</html>

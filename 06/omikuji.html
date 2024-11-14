@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おみくじ再び</title>
+    <style>
+        #result {
+            transition: 1s;
+        }
+
+        .anim {
+            transform: rotateY(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">占う</button>
+    <p><img src="https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/omikuji.png" alt="結果" id="result">
+    </p>
+    <p id="message">何か一言が表示されます。</p>
+    <a href="./index.html">indexへ</a>
+    <a href="./omikuji2.html">おみくじ改造へ</a>
+
+
+    <script>
+        const btn = document.getElementById('btn'),
+            result = document.getElementById('result'),
+            message = document.getElementById('message');
+        let num;
+        const textMessage = ['今日はとってもいいことがありそう！', '今日の夜ご飯はとっても美味しい！', 'トイレに並ばずに入れる！', '帰りに勧誘に話しかけられそう！', 'インフルエンザになりそう！'];
+        const imgResult = ['daikichi', 'chuukichi', 'syoukichi', 'kyou', 'daikyou'];
+
+
+        btn.addEventListener('click', function () {
+            num = Math.floor(Math.random() * 5);
+            console.log(num);
+
+            result.setAttribute('src', `https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/${imgResult[num]}.png`)
+            message.innerHTML = textMessage[num];
+
+            // switch (num) {
+            //     case 0:
+            //         result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/daikichi.png');
+            //         message.innerHTML = '今日はとってもいいことがありそう！';
+            //         break;
+            //     case 1:
+            //         result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/chuukichi.png');
+            //         message.innerHTML = '今日の夜ご飯はとっても美味しい！';
+            //         break;
+            //     case 2:
+            //         result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/syoukichi.png');
+            //         message.innerHTML = 'トイレに並ばずに入れる！';
+            //         break;
+            //     case 3:
+            //         result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/kyou.png');
+            //         message.innerHTML = '帰りに勧誘に話しかけられそう！';
+            //         break;
+            //     case 4:
+            //         result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/daikyou.png');
+            //         message.innerHTML = 'インフルエンザになりそう！';
+            //         break;
+
+            //     default:
+            //         result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/omikuji.png');
+            //         message.innerHTML = 'どうしてそうなったの...？';
+
+            // }
+            result.classList.toggle('anim');
+        });
+    </script>
+</body>
+
+</html>
