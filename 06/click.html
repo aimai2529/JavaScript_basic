@@ -18,6 +18,7 @@
         img {
             max-width: 100%;
             height: auto;
+            transition: .7s;
         }
 
         .all {
@@ -30,11 +31,24 @@
         .chr {
             width: 30%;
         }
+
+        .ko {
+            transform: rotate(720deg) scale(0);
+        }
+
+        .btn {
+            display: none;
+        }
+
+        .clear {
+            display: inline-block;
+        }
     </style>
 </head>
 
 <body>
     <a href="./index.html">indexへ</a>
+    <a href="./link.html">linkへ</a>
     <h1>click game</h1>
     <p class="msg">クリックでモンスターを倒せ！</p>
     <div class="all">
@@ -51,30 +65,77 @@
             <p>HP:10</p>
         </div>
     </div>
+    <p class="times">クリア回数 0 回</p>
+    <button class="btn">もう一回！</button>
 
     <script>
         const charactor = document.querySelectorAll('.chr'),
             hitpoint = document.querySelectorAll('.chr p'),
+            img = document.querySelectorAll('.chr img'),
             message = document.querySelector('.msg'),
-            count = [];
+            btn = document.querySelector('.btn'),
+            times = document.querySelector('.times'),
+            count = [],
+            hp = [];
+        let num = 0,
+            clearTime = 0;
 
-        for (let i = 0; i < hitpoint.length; i++) {
-            console.log(hitpoint[i].innerHTML);
-        };
+        btn.addEventListener('click', function () {
+            btn.classList.remove('clear');
+            message.innerHTML = 'クリックでモンスターを倒せ！';
+
+            for (let i = 0; i < charactor.length; i++) {
+                console.log(hitpoint[i].innerHTML);
+                hp[i] = Math.floor(Math.random() * 10 + (5 + clearTime * 3));
+                hitpoint[i].innerHTML = `HP:${hp[i]}`;
+                // HP設定
+
+                count[i] = 0;
+                img[i].classList.remove('ko');
+            }
+        });
 
         for (let i = 0; i < charactor.length; i++) {
-            count[i] = 0;
+            console.log(hitpoint[i].innerHTML);
+            hp[i] = Math.floor(Math.random() * 10 + 5);
+            hitpoint[i].innerHTML = `HP:${hp[i]}`;
+            // HP設定
+
+            count[i] = 0; //クリック回数をカウント
             charactor[i].addEventListener('click', function () {
-                console.log('hit' + count[i]);
-                if (count[i] < 10) {
+                if (count[i] < hp[i] - 1) {
                     count[i] += 1;
-                    hitpoint[i].innerHTML = `HP:${10 - count[i]}`;
-                    if (count[0] == 10 && count[1] == 10 && count[2] == 10) {
-                        message.innerHTML = 'おめでとう！！';
-                    }
-                };
+                    hitpoint[i].innerHTML = `HP:${hp[i] - count[i]}`;
+                } else if (count[i] == hp[i] - 1) { //10になるクリックのタイミングが特異点
+                    num += 1;
+                    count[i] += 1;
+                    hitpoint[i].innerHTML = `HP:${hp[i] - count[i]}`;
+                    img[i].classList.add('ko');
+                } else {
+                    count[i] += 1; //countを増やし続けることでずっとcount[i] == hp[i]-1だと認識されることを防ぐ
+                }
+                if (num == charactor.length) {
+                    message.innerHTML = 'おめでとう！！';
+                    btn.classList.add('clear');
+                    clearTime += 1;
+                    num = 0;
+                    times.innerHTML = `クリア回数 ${clearTime} 回`;
+                }
+                // if (count[0] == 10 && count[1] == 10 && count[2] == 10) {
+                //     message.innerHTML = 'おめでとう！！';
+                // };
+                console.log('hit' + count[i], num);
             });
         };
+
+        // 変更点
+        // 敵のHPを5〜15の間でランダムに
+        // 倒した時のアニメーションを追加
+        //再挑戦ボタンの追加
+        // クリア回数も表示
+        //再挑戦するたびに初期HPが増加
+
+        console.log(count[0], num);
 
     </script>
 
