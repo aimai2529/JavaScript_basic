@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resize</title>
+</head>
+
+<body>
+    <p id="result">ブラウザのサイズが表示されます。</p>
+
+    <div>
+        <a href="scroll.html">前へ</a>
+        <a href="cursor.html">後へ</a>
+    </div>
+
+    <script>
+        const result = document.querySelector('#result');
+
+        window.addEventListener('resize', function () {
+            console.log(window.innerHeight, window.innerWidth, 'a');
+            result.innerHTML = `${window.innerWidth}px : ${window.innerHeight}px`;
+            if (window.innerHeight <= 400) {
+                result.style.color = '#F00';
+            } else {
+                result.style.color = '#000';
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cursor</title>
+    <style>
+        html {
+            cursor: none;
+        }
+
+        #icon {
+            width: 50px;
+            position: absolute;
+            transition: transform 0.2s;
+        }
+    </style>
+
+</head>
+
+<body>
+    <img id="icon" src="https://www.svgrepo.com/show/489642/pencil.svg" alt="" />
+
+    <div>
+        <a href="resize.html">前へ</a>
+        <a href="category.html">後へ</a>
+    </div>
+
+    <script>
+        const icon = document.querySelector('#icon');
+        document.addEventListener("mousemove", function (e) {
+            console.log(e.clientX, e.clientY, e);
+            icon.style.top = `${e.clientY}px`;
+            icon.style.left = `${e.clientX}px`;
+        });
+        document.addEventListener('mousedown', function () {
+            console.log('a');
+            icon.style.transform = 'scale(150%)';
+        })
+        document.addEventListener('mouseup', function () {
+            icon.style.transform = 'scale(100%)';
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plus</title>
+</head>
+
+<body>
+    <p id="result">0</p>
+    <button id="plus">+</button>
+    <div>
+        <a href="#">前へ</a>
+        <a href="move.html">後へ</a>
+    </div>
+
+    <script>
+        const result = document.querySelector('#result'),
+            plus = document.querySelector('#plus');
+        let num = 0;
+
+        plus.addEventListener('click', function () {
+            result.innerHTML = ++num;
+        });
+    </script>
+</body>
+
+</html>

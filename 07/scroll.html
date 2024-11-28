@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll</title>
+    <style>
+        body {
+            height: 3000px;
+            background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+        }
+
+        #toTop {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            width: 50px;
+            height: 50px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            font-size: 1rem;
+            line-height: 1rem;
+            text-align: center;
+            cursor: pointer;
+            display: none;
+        }
+
+        #toTop.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="toTop">↑</button>
+
+    <div>
+        <a href="blank.html">前へ</a>
+        <a href="resize.html">後へ</a>
+    </div>
+
+    <script>
+        const toTop = document.querySelector('#toTop');
+
+        window.addEventListener('scroll', function () {
+            console.log(window.scrollY, 'a');
+            if (window.scrollY > 300) {
+                toTop.classList.add('active');
+            } else {
+                toTop.classList.remove('active');
+            }
+        })
+
+        toTop.addEventListener('click', function () {
+            window.scroll({
+                top: 0,
+                behavior: "smooth",
+            });
+        })
+        // ボタンを押したらtopへ戻る機能を追加
+    </script>
+</body>
+
+</html>
