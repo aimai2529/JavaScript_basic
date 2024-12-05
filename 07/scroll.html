@@ -47,9 +47,9 @@
 
         window.addEventListener('scroll', function () {
             console.log(window.scrollY, 'a');
-            if (window.scrollY > 300) {
+            if (window.scrollY > 300 && !toTop.classList.contains("active")) {
                 toTop.classList.add('active');
-            } else {
+            } else if (window.scrollY <= 300 && toTop.classList.contains("active")) {
                 toTop.classList.remove('active');
             }
         })

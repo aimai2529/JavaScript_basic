@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ボタン</title>
+</head>
+
+<body>
+    <button class="number">1</button>
+    <button class="number">2</button>
+    <button class="number">3</button>
+    <button class="random">ランダム</button>
+    <p class="result"></p>
+
+    <script>
+        const words = ['HTML', 'CSS', 'JavaScript'],
+            result = document.querySelector('.result'),
+            numberBtn = document.querySelectorAll('.number'),
+            randomBtn = document.querySelector('.random');
+
+        for (let i = 0; i < numberBtn.length; i++) {
+            numberBtn[i].addEventListener('click', () => {
+                console.log('ばあ');
+            })
+        }
+
+        randomBtn.addEventListener('click', () => {
+            console.log('いない');
+        })
+    </script>
+</body>
+
+</html>

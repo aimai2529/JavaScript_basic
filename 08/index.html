@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>関数</title>
+</head>
+
+<body>
+
+    <script>
+        testFunc();
+        testFunc();
+        function testFunc() {
+            console.log('関数を実行したぞ！');
+        }
+
+        function changeDoller(yen) {
+            return yen / 150;
+        }
+        let money = 150,
+            doller = changeDoller(money);
+        console.log(`${doller}ドル`)
+
+        let text = setText("takagi");
+        console.log(text);
+        console.log(setText())
+
+        function setText(name = 'kawaguchi') {
+            return `Hello! ${name}`;
+        }
+
+        let value = [5, 10, 15, 20, 25];
+        const average = (num) => {
+            let sum = 0;
+            for (let i = 0; i < num.length; i++) {
+                console.log('🍎');
+                sum += num[i];
+            }
+            return sum / num.length;
+        }
+        average(value);
+        console.log(average(value))
+    </script>
+
+</body>
+
+</html>
