@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ランダムみくじ</title>
+</head>
+
+<body>
+    <h1>大吉で止めよう！</h1>
+    <div>
+        <button class="easy level">かんたん</button>
+        <button class="normal level">ふつう</button>
+        <button class="hard level">むずかしい</button>
+        <button class="oni level">おに</button>
+        <p class="levelText">かんたんで挑戦！</p>
+    </div>
+    <button class="start">start</button>
+    <button class="stop">stop</button>
+    <div><img src="https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/omikuji.png" alt="" class="image">
+    </div>
+    <p class="message"></p>
+
+    <script>
+        const start = document.querySelector('.start'),
+            stop = document.querySelector('.stop'),
+            image = document.querySelector('.image'),
+            level = document.querySelectorAll('.level'),
+            levelText = document.querySelector('.levelText'),
+            message = document.querySelector('.message'),
+            url = 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/',
+            files = ['daikichi.png', 'chuukichi.png', 'syoukichi.png', 'kyou.png', 'daikyou.png'];
+
+        let num = Math.floor(Math.random() * files.length),
+            count = 0,
+            speed = 550,
+            timer;
+
+        for (let i = 0; i < level.length; i++) {
+            level[i].addEventListener('click', () => {
+                speed = 550 - i * 150;
+                console.log(speed);
+                levelText.innerHTML = `${level[i].innerHTML}で挑戦！`;
+            })
+        }//難易度ボタンの設定
+
+        const setImage = () => {
+            image.setAttribute('src', url + files[num++])
+            if (num >= files.length) {
+                num = 0;
+            }//数字をもとに戻して繰り返し表示させるようにする
+            timer = setTimeout(setImage, speed);
+        }
+
+        start.addEventListener('click', () => {
+            if (count == 0) {
+                timer = setTimeout(setImage, speed);
+                console.log('ya', num);
+            }
+            count = 1;//ボタン連打によるバグ防止
+            message.innerHTML = ``;
+        })
+
+        stop.addEventListener('click', () => {
+            clearTimeout(timer);
+            if (num == 1) {
+                console.log('おめでとう！');
+                message.innerHTML = `どんだふるこんぼ！`;
+            }
+            console.log('pa', num);
+            count = 0;
+        })
+    </script>
+</body>
+
+</html>

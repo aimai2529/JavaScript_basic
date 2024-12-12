@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <button class="koko">ここ</button>
 
     <script>
         testFunc();
@@ -42,6 +43,31 @@
         }
         average(value);
         console.log(average(value))
+
+        let count = 0,
+            timer;
+        const countUp = () => {
+            console.log(count++);
+            setTimeout(countUp, 1000);
+        }
+        setTimeout(countUp, 1000);
+        console.log(count);
+
+        const randomColor = () => {
+            let red = Math.floor(Math.random() * 256),
+                blue = Math.floor(Math.random() * 256),
+                green = Math.floor(Math.random() * 256);
+            document.body.style.backgroundColor = `rgb(${red},${green},${blue})`;
+        }
+
+        timer = setInterval(randomColor, 1000);
+
+        const koko = document.querySelector('.koko');
+
+        koko.addEventListener('click', () => {
+            clearTimeout(timer);
+            console.log('pa');
+        })
     </script>
 
 </body>

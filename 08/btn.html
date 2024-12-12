@@ -15,20 +15,28 @@
     <p class="result"></p>
 
     <script>
-        const words = ['HTML', 'CSS', 'JavaScript'],
+        const words = ['1.HTML', '2.CSS', '3.JavaScript'],
             result = document.querySelector('.result'),
             numberBtn = document.querySelectorAll('.number'),
-            randomBtn = document.querySelector('.random');
+            randomBtn = document.querySelector('.random'),
+            getWord = (num) => {
+                result.innerHTML = words[num];
+            };
+
+        getWord(Math.floor(Math.random() * words.length))
+
 
         for (let i = 0; i < numberBtn.length; i++) {
             numberBtn[i].addEventListener('click', () => {
                 console.log('ばあ');
+                getWord(i);
             })
         }
-
         randomBtn.addEventListener('click', () => {
             console.log('いない');
+            getWord(Math.floor(Math.random() * words.length))
         })
+
     </script>
 </body>
 
