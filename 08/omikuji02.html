@@ -54,11 +54,15 @@
         }
 
         start.addEventListener('click', () => {
-            if (count == 0) {
-                timer = setTimeout(setImage, speed);
-                console.log('ya', num);
-            }
-            count = 1;//ボタン連打によるバグ防止
+            // if (count == 0) {
+            //     timer = setTimeout(setImage, speed);
+            //     console.log('ya', num);
+            // }
+            // count = 1;//ボタン連打によるバグ防止
+            clearTimeout(timer);
+            timer = setTimeout(setImage, speed);
+            console.log('ya', num);
+
             message.innerHTML = ``;
         })
 

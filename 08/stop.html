@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stop</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        button {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        .count {
+            font-size: 36px;
+            font-weight: bold;
+            transition: unset;
+        }
+
+        .opacity {
+            opacity: 0;
+            transition: .5s opacity;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="title"></p>
+    <button class="start">START</button>
+    <button class="stop">STOP</button>
+    <p class="count">0</p>
+    <p class="text"></p>
+
+    <script>
+        const title = document.querySelector('.title'),
+            start = document.querySelector('.start'),
+            stop = document.querySelector('.stop'),
+            count = document.querySelector('.count'),
+            text = document.querySelector('.text');
+        let num = 0,
+            goal = 100,
+            speed = 50,
+            timer;
+
+        title.innerHTML = `${goal}で止めよう！`
+
+        setNumber = () => {
+            clearTimeout(timer);
+            count.innerHTML = ++num;
+            timer = setTimeout(setNumber, speed);
+            if (num > 60 && !count.classList.contains('opacity') && goal >= 100) {
+                count.classList.add('opacity');
+                console.log('kouhann');
+                text.innerHTML = '消しちゃお！'
+            }//60になったら数字を消す
+        }
+        //カウントを増やす関数
+
+        start.addEventListener('click', () => {
+            console.log('pa');
+            timer = setTimeout(setNumber, speed);
+            text.innerHTML = 'どきどき！';
+
+        })
+        //スタートボタンを押した時
+
+        stop.addEventListener('click', () => {
+            clearTimeout(timer);
+            console.log('pi', num);
+            count.classList.remove('opacity')
+            if (num >= goal - 2 && num <= goal + 2 && num != goal) {
+                text.innerHTML = 'おしい！';
+            } else if (num == goal) {
+                text.innerHTML = 'すごい！';
+            } else {
+                text.innerHTML = 'STARTを押してもう一回チャレンジ！'
+            }
+            num = 0;
+        })
+        //ストップボタンを押した時
+    </script>
+</body>
+
+</html>
