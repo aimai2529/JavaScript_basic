@@ -56,11 +56,42 @@
 
         .rotate {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 2px;
+            height: 100px;
             background: #ddffda;
             box-shadow: 0 0 20px #50e60a;
-            border-radius: 10px;
+            /* border-radius: 15px; */
+            transition: 1s linear;
+        }
+
+        .m-rotate {
+            position: absolute;
+            width: 2px;
+            height: 60px;
+            background: #dadeff;
+            box-shadow: 0 0 20px #0a48e6;
+            transition: 1s linear;
+        }
+
+        .h-rotate {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: #ffdaf8;
+            box-shadow: 0 0 20px #e60ae6;
+            transition: 1s linear;
+        }
+
+        .line {
+            position: absolute;
+            top: var(--centerTop);
+            left: var(--centerLeft);
+            width: 500px;
+            height: 500px;
+            border: 2px #ddffda solid;
+            border-radius: 250px;
+            /* box-shadow: 0 0 20px #50e60a; */
+            /* transform: translate(-50%, -50%); */
         }
     </style>
 </head>
@@ -72,6 +103,9 @@
             <p class="clock-time"></p>
         </div>
         <div class="rotate"></div>
+        <div class="m-rotate"></div>
+        <div class="h-rotate"></div>
+        <div class="line"></div>
     </div>
 
     <script>
@@ -88,6 +122,32 @@
                 min = d.getMinutes(),
                 sec = d.getSeconds();
 
+
+            //回る針
+            const sr = document.querySelector('.rotate'),
+                mr = document.querySelector('.m-rotate'),
+                hr = document.querySelector('.h-rotate');
+            const radius = 250;
+            document.querySelector('.line').style.setProperty('--centerTop', window.innerHeight / 2);
+            document.querySelector('.line').style.setProperty('--centerLeft', window.innerWidth / 2);
+
+            const t = sec * (360 / 60) * (Math.PI / 180),
+                m = (min * 60 + sec) * (360 / 3600) * (Math.PI / 180),
+                h = (hour * 3600 + min * 60 + sec) * (360 / (3600 * 12)) * (Math.PI / 180);
+
+            const x = window.innerHeight / 2 + (Math.cos(-(t - Math.PI)) * radius),
+                mx = window.innerHeight / 2 + (Math.cos(-(m - Math.PI)) * radius),
+                hx = window.innerHeight / 2 + (Math.cos(-(h - Math.PI)) * radius);
+            const y = window.innerWidth / 2 + (Math.sin(-(t - Math.PI)) * radius),
+                my = window.innerWidth / 2 + (Math.sin(-(m - Math.PI)) * radius),
+                hy = window.innerWidth / 2 + (Math.sin(-(h - Math.PI)) * radius);
+
+            sr.setAttribute('style', `top: ${x - 50}px; left: ${y - 1}px; transform:rotate(${t}rad)`);
+            mr.setAttribute('style', `top: ${mx - 30}px; left: ${my - 1}px; transform:rotate(${m}rad)`);
+            hr.setAttribute('style', `top: ${hx - 20}px; left: ${hy - 1}px; transform:rotate(${h}rad)`);
+            //回る針終わり
+
+
             month = month < 10 ? `0${month}` : month;
             date = date < 10 ? `0${date}` : date;
             hour = hour < 10 ? `0${hour}` : hour;
@@ -103,19 +163,6 @@
         }
         clock();
 
-        const el = document.querySelector('.rotate');
-        const center = window.innerWidth / 2;
-        const radius = 250;
-
-        setInterval(() => {
-            console.log(new Date().getSeconds());
-            const t = new Date().getSeconds() * (360 / 60) * (Math.PI / 180);
-
-            const x = center + (Math.cos(-(t - Math.PI)) * radius);
-            const y = center + (Math.sin(-(t - Math.PI)) * radius);
-
-            el.setAttribute('style', `top: ${x}px; left: ${y}px;`)
-        }, 10);
     </script>
 </body>
 
