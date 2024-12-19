@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="back">戻る</button>
+    <button class="back2">2つ戻る</button>
+
+    <script>
+        console.log(history);
+
+        const back = document.querySelector('.back');
+        back.addEventListener('click', () => {
+            history.back();
+        });
+
+        const back2 = document.querySelector('.back2');
+        back2.addEventListener('click', () => {
+            history.go(-2);
+        });
+
+        //現在の時間を取得する
+        let date = new Date();
+        console.log(date);
+
+        //「1970年1月1日」からの経過ミリ秒数を取得する
+        console.log(Date.now());
+
+        //時間や分を個別に取得する
+        console.log(date.getFullYear());
+        console.log(date.getMonth() + 1);
+        console.log(date.getDate());
+        console.log(date.getHours());
+        console.log(date.getMinutes());
+        console.log(date.getSeconds());
+    </script>
+</body>
+
+</html>
