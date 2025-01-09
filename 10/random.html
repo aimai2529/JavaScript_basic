@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ランダム</title>
+</head>
+
+<body>
+    <button class="btn">数字生成</button>
+    <button class="image">画像生成</button>
+
+    <script>
+        const btn = document.querySelector('.btn'),
+            ul = document.createElement('ul');
+        document.body.append(ul);
+        let num;
+
+        btn.addEventListener('click', () => {
+            num = Math.floor(Math.random() * 100);
+            const li = document.createElement('li');
+            const test = 5;
+            console.log(test);
+            li.innerHTML = num;
+            ul.append(li);
+        });
+
+        const image = document.querySelector('.image');
+
+        image.addEventListener('click', () => {
+            const img = document.createElement('img');
+            img.src = `https://picsum.photos/300/300?image=${Math.floor(Math.random() * 100)}`;
+            ul.append(img);
+        });
+
+
+        let count = 0,
+            timer;
+        const randomImg = () => {
+            count++;
+            const img = document.createElement('img');
+            img.src = `https://picsum.photos/300/300?image=${Math.floor(Math.random() * 100)}`;
+            ul.append(img);
+            timer = setTimeout(randomImg, 5000);
+            if (count === 9) {
+                clearTimeout(timer);
+            }
+        }
+
+        timer = setTimeout(randomImg, 5000);
+    </script>
+</body>
+
+</html>

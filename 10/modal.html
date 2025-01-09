@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modal</title>
+</head>
+
+<body>
+    <button class="btn">トライデントとは</button>
+    <div class="modal"></div>
+
+    <script>
+        const btn = document.querySelector('.btn'),
+            modal = document.querySelector('.modal');
+
+        btn.addEventListener('click', () => {
+            console.log('名古屋にある専門学校です。');
+            modal.innerHTML = '<p>名古屋にある専門学校です。</p>';
+
+        })
+    </script>
+</body>
+
+</html>
