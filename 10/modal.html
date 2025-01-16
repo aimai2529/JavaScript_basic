@@ -5,21 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>modal</title>
+    <style>
+        .modal {
+            display: none;
+        }
+
+        .modal.show {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(80, 80, 80, 0.6);
+            color: #fff;
+        }
+    </style>
 </head>
 
 <body>
-    <button class="btn">トライデントとは</button>
-    <div class="modal"></div>
+    <div>
+        <button class="btn">トライデントとは</button>
+        <p>名古屋にある専門学校です。</p>
+        <div class="modal"></div>
+    </div>
+    <div>
+        <button class="btn">お腹が空いたら</button>
+        <p>からあげを食べます。</p>
+        <div class="modal"></div>
+    </div>
+    <div>
+        <button class="btn">喉が渇いたら</button>
+        <p>ピルクルを飲みます。</p>
+        <div class="modal"></div>
+    </div>
 
     <script>
-        const btn = document.querySelector('.btn'),
-            modal = document.querySelector('.modal');
+        const btn = document.querySelectorAll('.btn'),
+            modal = document.querySelectorAll('.modal');
 
-        btn.addEventListener('click', () => {
-            console.log('名古屋にある専門学校です。');
-            modal.innerHTML = '<p>名古屋にある専門学校です。</p>';
+        for (let i = 0; i < btn.length; i++) {
+            btn[i].addEventListener('click', (e) => {
+                console.log(e.target.nextElementSibling.textContent);
+                // modal[i].innerHTML = `<p>${e.target.nextElementSibling.innerHTML}</p>`;
+                modal[i].innerHTML = e.target.nextElementSibling.textContent;
+                modal[i].classList.add('show');
+            });
 
-        })
+            modal[i].addEventListener('click', () => {
+                modal[i].classList.remove('show');
+            });
+        }
     </script>
 </body>
 

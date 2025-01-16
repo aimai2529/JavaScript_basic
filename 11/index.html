@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            name: 'はる',
+            age: '23',
+            obj: {
+                like: 'ヒロ',
+            },
+            pray: () => {
+                console.log("pray...");
+            }
+        }
+        console.log(obj.name, obj['age']);
+        obj.pray();
+
+        const date = {
+            path: "https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/thing_chick_01.png",
+            width: 200,
+            color: "#f00",
+            play: () => {
+                console.log('play!');
+            },
+        }
+        const img = document.createElement("img");
+        img.setAttribute("src", date.path);
+        img.setAttribute("width", date.width);
+        img.style.border = `6px solid ${date.color}`;
+        img.addEventListener('click', () => {
+            date.play();
+        });
+
+        document.body.append(img);
+    </script>
+</body>
+
+</html>
