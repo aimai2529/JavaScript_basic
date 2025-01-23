@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クリックゲームその2</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .monster-all {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .monster {
+            display: grid;
+            grid-template-rows: subgrid;
+            grid-row: span 3;
+            text-align: center;
+        }
+
+        .monster-all img {
+            align-self: center;
+            justify-self: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>click game</h1>
+    <div class="monster-all">
+
+    </div>
+
+    <script>
+        const monsters = [
+            {
+                name: "ピンクカバ",
+                pic: "https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/thing_hippo_02.png",
+                hp: Math.floor(Math.random() * 10) + 5,
+                clear: function () {
+                    alert(`${this.name}を倒した！`);
+                    // 同じオブジェクトの中のものを撮りたい時にはthisを使う ただし、アロー関数の形だと使えない
+                },
+            },
+            {
+                name: "カマキリ",
+                pic: "https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/thing_mantis_01.png",
+                hp: Math.floor(Math.random() * 6) + 3,
+                clear: () => {
+                    alert("おう、あついぜ");
+                },
+            },
+            {
+                name: "ゴリラ",
+                pic: "https://dotown.maeda-design-room.net/wp-content/uploads/2022/01/thing_gorilla_01.png",
+                hp: Math.floor(Math.random() * 8) + 4,
+                clear: () => {
+                    alert("ゴリラを倒した！");
+                },
+            },
+        ];
+
+        const monsterAll = document.querySelector('.monster-all');
+
+        monsters.forEach((obj) => {
+            console.log(obj);
+        })
+
+        for (let i = 0; i < monsters.length; i++) {
+            console.log(monsters);
+            const createMonster = document.createElement('div'),
+                createName = document.createElement('p'),
+                createPic = document.createElement('img'),
+                createHP = document.createElement('p');
+
+            createMonster.classList.add('monster');
+            createName.innerHTML = monsters[i].name;
+            createPic.src = monsters[i].pic;
+            createPic.setAttribute('width', 200);
+            createHP.innerHTML = `HP: ${monsters[i].hp}`;
+
+            createPic.addEventListener('click', () => {
+                if (monsters[i].hp > 0) {
+                    monsters[i].hp--;
+                    console.log(monsters[i].hp);
+                    createHP.innerHTML = `HP: ${monsters[i].hp}`;
+                }
+                if (monsters[i].hp === 0) {
+                    monsters[i].clear();
+                    monsters[i].hp--;
+                }
+            });
+
+            monsterAll.append(createMonster);
+            createMonster.append(createName);
+            createMonster.append(createPic);
+            createMonster.append(createHP);
+
+        }
+    </script>
+</body>
+
+</html>
